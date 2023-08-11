@@ -18,8 +18,11 @@ Colas
 Listas
 Recursividad
 
-GUI:
+Cliente_Servidor:
 Jframe
+Base de datos
+Try Catch
+Herencia
 
 Base de datos relacional:
 Mysql
