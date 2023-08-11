@@ -2,6 +2,7 @@ package DataStructures;
 
 import javax.swing.*;
 
+
 public class LinkedListOwn {
 
     private Nodo first;
@@ -46,8 +47,33 @@ public class LinkedListOwn {
             while (aux.getNext() != null && aux.getData().getId() < nodo_new.getData().getId()) {
                 aux = aux.getNext();
             }
+
             nodo_new.setNext(aux.getNext());
             aux.setNext(nodo_new);
+
+        }
+
+    }
+
+    public void insertTask(int id, String user, String date, String status, String description){
+
+
+        Task newTsk = new Task(id, user, date, status, description);
+        Nodo newNode = new Nodo();
+        newNode.setTaskData(newTsk);
+
+        if (empty() || newTsk.getId() < first.getTaskData().getId()) {
+            newNode.setNext(first);
+            first = newNode;
+
+        } else {
+            Nodo aux = first;
+            while (aux.getNext() != null && aux.getTaskData().getId() < newNode.getTaskData().getId()) {
+                aux = aux.getNext();
+            }
+
+            newNode.setNext(aux.getNext());
+            aux.setNext(newNode);
 
         }
 
@@ -67,6 +93,22 @@ public class LinkedListOwn {
             return minha_lista + " ]";
         }
     }
+    public String mostrarTsks() {
+        if (empty()) {
+            return "[]";
+        } else {
+            Nodo aux = first;
+            String minha_lista = "[ "+first.getTaskData().toString();
+            while (aux.getNext() != null) {
+                minha_lista += ", " + aux.getNext().getTaskData();
+                aux = aux.getNext();
+
+            }
+            return minha_lista + " ]";
+        }
+    }
+
+
     public boolean exist(String name) {
         if (empty()) {
             return false;
@@ -87,9 +129,10 @@ public class LinkedListOwn {
     public Nodo retrieveSingleNode(String name){
             if(exist(name)){
                 Nodo aux = first;
-                while(aux.getNext() != null){
+                while(aux != null){
                     if(aux.getData().getUser().equals(name)){
                         return aux;
+
                     }
                     aux = aux.getNext();
                 }
@@ -97,6 +140,7 @@ public class LinkedListOwn {
             }else{
 
                 JOptionPane.showMessageDialog(null, "there is no user with this username :)");
+
             }
         return null;
     }

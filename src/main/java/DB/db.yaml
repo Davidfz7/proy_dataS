@@ -1,3 +1,3 @@
-url: "jdbc:mysql://localhost:3306/jdbcdemo"
+url: "jdbc:mysql://localhost:3307/stg"
 user: "root"
-password: "1234"
+password: ""

@@ -3,6 +3,7 @@ package DataStructures;
 public class Nodo {
     private Nodo next;
     private User data;
+    private Task taskData;
 
     public Nodo() {
         this.next = null;
@@ -22,5 +23,13 @@ public class Nodo {
 
     public void setData(User data) {
         this.data = data;
+    }
+
+    public Task getTaskData() {
+        return taskData;
+    }
+
+    public void setTaskData(Task taskData) {
+        this.taskData = taskData;
     }
 }

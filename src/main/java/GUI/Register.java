@@ -34,7 +34,9 @@ public class Register extends JFrame {
                     if (password_field.getText().equals(cpassword_field.getText())){
                         String password = password_field.getText();
                         DB newDb = new DB();
-                        newDb.insertData(name, password);
+                        newDb.insertUser(name, password);
+                        newDb.closeConnection();
+
 
                     }else{
 

@@ -47,31 +47,24 @@ public class Login extends JFrame{
                     String password = password_field.getText();
                     DB newDb = new DB();
 
-                    LinkedListOwn my_list = newDb.retrieveData();
+                    LinkedListOwn my_list = newDb.retrieveUsers();
 
                     Nodo form = my_list.retrieveSingleNode(name);
                     if (form.getData().getUser().equals(name) && form.getData().getPassword().equals(password)){
 
                         JOptionPane.showMessageDialog(null, "Inicio de sesion exitoso");
+                        dispose();
+                        new SelectOp(name);
+                        newDb.closeConnection();
 
                     }else{
 
                         JOptionPane.showMessageDialog(null, "Algo no matchea");
+                        newDb.closeConnection();
                     }
                 }
 
             }
         });
-    }
-
-
-
-    public static void main(String[] args){
-
-        new Login();
-        int hola = 0;
-
-        System.out.println();
-
     }
 }
